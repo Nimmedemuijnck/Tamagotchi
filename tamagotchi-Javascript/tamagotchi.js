@@ -3,46 +3,22 @@
 
 console.log("Javascript werkt!");
 
+/*
 function geefEten(){
 console.log("Geef je tamagotchi eten!");
 }
 geefEten();
 
-
 function kiesKarater(naam){
     console.log("Jouw karakter: " + naam)
 }
+kiesKarater("Mimitchie");*/
 
-kiesKarater("Mimitchie");
-
-
-/* Happy birthday 1 karakter
-
-function HappyBirthday(naam){
-    console.log("Happy Birthday to you.");
-    console.log("Happy Birthday to you.");
-    console.log("Happy Birthday, dear " + naam);
-    console.log("Happy Birthday to you.");
-}
-HappyBirthday ("Mimitchie");
-*/
-
-/* Happy birthday 2 karakters
-
-function HappyBirthday(naamEen, naamTwee){
-    console.log("Happy Birthday to you.");
-    console.log("Happy Birthday to you.");
-    console.log("Happy Birthday, dear "
-    + naamEen,"and",naamTwee)
-    console.log("Happy Birthday to you.");
-}
-HappyBirthday ("Mimitchie", "Tama");
-*/
 
 const nameInput = document.getElementById("nameInput");
-
 const button = document.getElementById("button");
 const h2 = document.querySelector("h2");
+
 let tamagotchiName;
 
 function logInput() {
@@ -115,4 +91,28 @@ aftellen:
 for (let i = 10; i >= 0; i--) {
     console.log(i);
 }
+*/
+
+
+/* Happy birthday 1 karakter
+
+function HappyBirthday(naam){
+    console.log("Happy Birthday to you.");
+    console.log("Happy Birthday to you.");
+    console.log("Happy Birthday, dear " + naam);
+    console.log("Happy Birthday to you.");
+}
+HappyBirthday ("Mimitchie");
+*/
+
+/* Happy birthday 2 karakters
+
+function HappyBirthday(naamEen, naamTwee){
+    console.log("Happy Birthday to you.");
+    console.log("Happy Birthday to you.");
+    console.log("Happy Birthday, dear "
+    + naamEen,"and",naamTwee)
+    console.log("Happy Birthday to you.");
+}
+HappyBirthday ("Mimitchie", "Tama");
 */
