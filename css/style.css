@@ -1,9 +1,12 @@
 head{
-background-color: white;
+background-color: rgb(255, 255, 255);
 }
 
 body{
-background-color: white;
+    background-image: url("images/flowerfield.jpg");
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 img{

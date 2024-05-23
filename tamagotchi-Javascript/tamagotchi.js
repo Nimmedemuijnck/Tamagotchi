@@ -1,4 +1,5 @@
 /*constante || let variabelen || alle functies  || event listnerd */
+/* healthbar: https://www.youtube.com/watch?v=Wh2kVSPi_sE */
 
 console.log("Javascript werkt!");
 
@@ -85,5 +86,33 @@ btnStop.addEventListener('click', stopCountingTime)
 
 function stopCountingTime(){
     clearInterval(timer)
+}
+*/
+
+/* while loop:
+optellen:
+let i = 5;
+while (i < 5) {
+    console.log(i);
+    i++;
+
+aftellen:
+let i = 10;
+while (i >= 0) {
+    console.log(i);
+    i--;
+}
+*/
+
+
+/* for loop:
+optellen:
+for (let i = 0; i < 4; i++) {
+    console.log(i);
+}
+
+aftellen:
+for (let i = 10; i >= 0; i--) {
+    console.log(i);
 }
 */
