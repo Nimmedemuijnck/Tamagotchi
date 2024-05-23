@@ -6,10 +6,47 @@ body {
     background-image: url("../images/flowerfield.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; 
+    font-family: Arial, sans-serif;
 }
 
-img {
-    width: 200px;
+.container {
+    text-align: center;
+    max-width: 800px; 
+    margin: 0 auto; 
+}
+
+.container h1 {
+    font-size: 40px; 
+}
+
+.container h2 {
+    font-size: 28px;
+}
+
+.container img {
+    width: 270px; 
+    margin-top: 0px;
+}
+
+.container label {
+    font-size: 22px;
+    padding: 10px 20px;  
+    margin: 10px;  
+}
+
+.container input {
+    font-size: 18px;
+    margin: 10px;  
+}
+
+.container button {
+    font-size: 20px;
+    padding: 10px 20px; 
+    margin: 10px; 
 }
 
 label, input, button {
@@ -19,3 +56,9 @@ label, input, button {
 .naamGeven {
     display: flex;
 }
+
+#startButton {
+    display: block;
+    margin: 20px auto 0 auto; /* Zorgt ervoor dat de startknop in het midden onder de afbeelding wordt geplaatst */
+}
+

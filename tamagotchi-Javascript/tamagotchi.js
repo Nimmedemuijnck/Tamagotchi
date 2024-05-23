@@ -27,6 +27,10 @@ function logInput() {
 button.addEventListener("click", logInput);
 
 
+const startButton = document.getElementById("startButton");
+button.addEventListener("click", );
+
+
 /*function showHint() {
     hintP.textContent = "It's old and squeeky"
     setTimeout(hideHint, 3000)
