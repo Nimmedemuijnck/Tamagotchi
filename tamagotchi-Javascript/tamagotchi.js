@@ -101,48 +101,50 @@ HappyBirthday ("Mimitchie", "Tama");
 */
 
 
+
 // constanten
-const nameInput = document.getElementById("nameInput"); //naam geven
-const button = document.getElementById("button"); //naam geven knop
-const h2 = document.querySelector("h2"); //groet
-const healthSpan = document.querySelector('#health'); //healthspan
-const happinessSpan = document.querySelector('#happiness'); //happiness
-const feedButton = document.querySelector('#feed'); //feeding
-const playButton = document.querySelector('#play'); //playing
-const startButton = document.getElementById("startButton"); //start game button
-const firstPage = document.getElementById("first-page"); //first page
-const secondPage = document.getElementById("second-page"); //second page
+const nameInput = document.getElementById("nameInput");
+const button = document.getElementById("button");
+const h2 = document.querySelector("h2");
+const healthSpan = document.querySelector('#health');
+const happinessSpan = document.querySelector('#happiness');
+const feedButton = document.querySelector('#feed');
+const playButton = document.querySelector('#play');
+const startButton = document.getElementById("startButton");
+const firstPage = document.getElementById("first-page");
+const secondPage = document.getElementById("second-page"); 
 
 
 // letjes
-let health = 100; //healthspan
-let happiness = 100; //happiness
-let tamagotchiName; //naam geven
+let health = 100;
+let happiness = 100;
+let tamagotchiName;
  
 //functions
 function logInput() {
-    tamagotchiName = nameInput.value; //naam geven
-    h2.textContent = "Hi, my name is " + tamagotchiName; //groet
+    tamagotchiName = nameInput.value;
+    h2.textContent = "Hi, my name is " + tamagotchiName;
 }
 
 function updateStatus() {
-    healthSpan.textContent = health; //healthspan
-    happinessSpan.textContent = happiness; //happiness
+    healthSpan.textContent = health;
+    happinessSpan.textContent = happiness;
     checkPetStatus();
 }
  
 function checkPetStatus() {
-    if (health <= 0 || happiness <= 0) { //healthspan & happiness
+    if (health <= 0 || happiness <= 0) {
         health = 0;
         happiness = 0;
         alert("Oh no! Your pet has passed away. "); //Bron: https://www.shecodes.io/athena/67094-how-to-create-an-alert-in-javascript
-        feedButton.disabled = true; //feeding
-        playButton.disabled = true; //playing
+        feedButton.disabled = true;
+        playButton.disabled = true;
+        skinsButton.disabled = true;
     }
 }
 
 function interactionFeed() {
-    if (health < 101) { //healthspan
+    if (health < 101) {
         health += 10;
         if (health > 100) {
             health = 100;
@@ -151,7 +153,7 @@ function interactionFeed() {
     }
 }
  
-/*function interactionPlay() { //happiness
+function interactionPlay() {
     if (happiness < 101) {
         happiness += 10;
     }
@@ -163,15 +165,16 @@ function interactionFeed() {
     }
     updateStatus();
 }
-*/
+ 
  
 //event listeners
-feedButton.addEventListener('click', interactionFeed); //feeding
-playButton.addEventListener('click', interactionPlay); //playing
-startButton.addEventListener("click", () => { //start game button
+feedButton.addEventListener('click', interactionFeed);
+playButton.addEventListener('click', interactionPlay);
+startButton.addEventListener("click", () => {
     firstPage.style.display = "none";
     secondPage.style.display = "block";
 });
-button.addEventListener("click", logInput); //naam geven knop
+
+button.addEventListener("click", logInput);
  
 updateStatus();
