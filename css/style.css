@@ -1,14 +1,21 @@
-head{
+head {
 background-color: rgb(255, 255, 255);
 }
 
-body{
-    background-image: url("images/flowerfield.jpg");
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+body {
+    background-image: url("../images/flowerfield.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
-img{
+img {
     width: 200px;
+}
+
+label, input, button {
+    margin: 10px;
+
+}
+.naamGeven {
+    display: flex;
 }

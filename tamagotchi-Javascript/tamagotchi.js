@@ -1,8 +1,6 @@
 /*constante || let variabelen || alle functies  || event listnerd */
 /* healthbar: https://www.youtube.com/watch?v=Wh2kVSPi_sE */
 
-console.log("Javascript werkt!");
-
 /*
 function geefEten(){
 console.log("Geef je tamagotchi eten!");
