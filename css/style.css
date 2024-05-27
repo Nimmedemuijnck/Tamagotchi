@@ -68,3 +68,7 @@ label, input, button {
     left: 20px; /* Afstand vanaf de linkerkant van het scherm */
     z-index: 1000; /* Zorg ervoor dat de audioplayer bovenaan andere elementen wordt weergegeven */
 }
+
+.tamagotchiIMG{
+    font-size: 40px;
+}

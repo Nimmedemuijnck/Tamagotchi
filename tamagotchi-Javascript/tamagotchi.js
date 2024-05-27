@@ -123,7 +123,6 @@ function checkPetStatus() {
         tamagotchiIMG.src = "images/cat_sleeping.png";
         feedButton.disabled = true;
         playButton.disabled = true;
-
         setTimeout(function() {
             alert("We're sorry to inform you that your beloved pet has peacefully passed away."); //Bron: https://www.shecodes.io/athena/67094-how-to-create-an-alert-in-javascript
         },100);
