@@ -153,7 +153,11 @@ function interactionPlay() {
         happiness = 100;
     }
     if (health > 0) {
-        health -= 5;
+        let randomDecrease = Math.floor(Math.random() * 10) + 1; //random decrease between 1-10
+        health -= randomDecrease;
+        if (health < 0) {
+            health = 0;
+        }
     }
     updateStatus();
 }
@@ -176,15 +180,12 @@ playButton.addEventListener('click', interactionPlay); //Playing
 //Start Button
 startButton.addEventListener("click", () => {
     if (nameInput.value === "") {
-        alert("Please enter a name for your tamagotchi!"); // Geef een waarschuwing als er geen naam is ingevoerd
-    } else {
-        logInput(); // Roep de logInput functie aan als er een naam is ingevoerd
+        alert("Please enter a name for your tamagotchi!"); //warning to enter a name
+        logInput();
         firstPage.style.display = "none";
         secondPage.style.display = "block";
     }
 });
-
-
 //Hapiness Decrease Every 10 Seconds
 happinessInterval = setInterval(decreaseHappiness, 10000);
 //Name Button
