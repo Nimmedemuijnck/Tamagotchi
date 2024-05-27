@@ -116,6 +116,7 @@ const firstPage = document.getElementById("first-page");
 const secondPage = document.getElementById("second-page"); 
 
 
+
 // letjes
 let health = 100;
 let happiness = 100;
@@ -197,5 +198,6 @@ startButton.addEventListener("click", () => {
 happinessInterval = setInterval(decreaseHappiness, 10000); 
 
 nameButton.addEventListener("click", logInput);
+
  
 updateStatus();
