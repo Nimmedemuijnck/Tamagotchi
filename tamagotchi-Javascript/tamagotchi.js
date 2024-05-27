@@ -175,9 +175,16 @@ feedButton.addEventListener('click', interactionFeed); //Feeding
 playButton.addEventListener('click', interactionPlay); //Playing
 //Start Button
 startButton.addEventListener("click", () => {
-    firstPage.style.display = "none";
-    secondPage.style.display = "block";
+    if (nameInput.value === "") {
+        alert("Please enter a name for your tamagotchi!"); // Geef een waarschuwing als er geen naam is ingevoerd
+    } else {
+        logInput(); // Roep de logInput functie aan als er een naam is ingevoerd
+        firstPage.style.display = "none";
+        secondPage.style.display = "block";
+    }
 });
+
+
 //Hapiness Decrease Every 10 Seconds
 happinessInterval = setInterval(decreaseHappiness, 10000);
 //Name Button
