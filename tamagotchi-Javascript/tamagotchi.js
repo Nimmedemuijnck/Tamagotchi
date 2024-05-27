@@ -78,29 +78,6 @@ for (let i = 10; i >= 0; i--) {
 */
 
 
-/* Happy birthday 1 karakter
-
-function HappyBirthday(naam){
-    console.log("Happy Birthday to you.");
-    console.log("Happy Birthday to you.");
-    console.log("Happy Birthday, dear " + naam);
-    console.log("Happy Birthday to you.");
-}
-HappyBirthday ("Mimitchie");
-*/
-
-/* Happy birthday 2 karakters
-
-function HappyBirthday(naamEen, naamTwee){
-    console.log("Happy Birthday to you.");
-    console.log("Happy Birthday to you.");
-    console.log("Happy Birthday, dear "
-    + naamEen,"and",naamTwee)
-    console.log("Happy Birthday to you.");
-}
-HappyBirthday ("Mimitchie", "Tama");
-*/
-
 
 
 // constanten
@@ -113,7 +90,8 @@ const feedButton = document.querySelector('#feed'); //Feeding
 const playButton = document.querySelector('#play'); //Playing
 const startButton = document.getElementById("startButton"); //Start Game
 const firstPage = document.getElementById("first-page");
-const secondPage = document.getElementById("second-page"); 
+const secondPage = document.getElementById("second-page");
+const catImage = document.querySelector('#cat_happy'); // Kat Afbeelding
 
 
 
@@ -121,7 +99,7 @@ const secondPage = document.getElementById("second-page");
 let health = 100;
 let happiness = 100;
 let tamagotchiName;
- 
+
 //functions
 
 //Give Name
@@ -130,13 +108,14 @@ function logInput() {
     h2.textContent = "Hi, my name is " + tamagotchiName;
 }
 
+//Update Pet Status
 function updateStatus() {
     healthSpan.textContent = health;
     happinessSpan.textContent = happiness;
     checkPetStatus();
 }
 
-
+//Check Pet Status + Pet Dies
 function checkPetStatus() {
     if (health <= 0 || happiness <= 0) {
         health = 0;
@@ -145,10 +124,11 @@ function checkPetStatus() {
         feedButton.disabled = true;
         playButton.disabled = true;
 
-        clearInterval(happinessInterval); 
+        clearInterval(happinessInterval);
     }
 }
 
+//Feeding
 function interactionFeed() {
     if (health < 101) {
         health += 10;
@@ -164,7 +144,8 @@ function interactionFeed() {
         updateStatus();
     }
 }
- 
+
+//playing
 function interactionPlay() {
     if (happiness < 101) {
         happiness += 10;
@@ -172,12 +153,13 @@ function interactionPlay() {
     if (happiness > 100) {
         happiness = 100;
     }
-    if(health > 0) {
+    if (health > 0) {
         health -= 5;
     }
     updateStatus();
 }
- 
+
+//Decrease Happiness
 function decreaseHappiness() {
     if (happiness > 0) {
         happiness -= happiness * 0.1;
@@ -187,17 +169,21 @@ function decreaseHappiness() {
         updateStatus();
     }
 }
- 
+
+
 //event listeners
-feedButton.addEventListener('click', interactionFeed);
-playButton.addEventListener('click', interactionPlay);
+feedButton.addEventListener('click', interactionFeed); //Feeding
+playButton.addEventListener('click', interactionPlay); //Playing
+//Start Button
 startButton.addEventListener("click", () => {
     firstPage.style.display = "none";
     secondPage.style.display = "block";
 });
-happinessInterval = setInterval(decreaseHappiness, 10000); 
+//Hapiness Decrease Every 10 Seconds
+happinessInterval = setInterval(decreaseHappiness, 10000);
 
+//Name Button
 nameButton.addEventListener("click", logInput);
 
- 
+
 updateStatus();
