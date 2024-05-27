@@ -120,7 +120,7 @@ function checkPetStatus() {
         clearInterval(happinessInterval);
         health = 0;
         happiness = 0;
-        tamagotchiIMG.src = "../images/cat_sleeping.png";
+        tamagotchiIMG.src = "images/cat_sleeping.png";
         feedButton.disabled = true;
         playButton.disabled = true;
         setTimeout(function() {
