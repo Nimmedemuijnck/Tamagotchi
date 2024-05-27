@@ -92,42 +92,43 @@ const startButton = document.getElementById("startButton"); //Start Game
 const firstPage = document.getElementById("first-page");
 const secondPage = document.getElementById("second-page");
 const catImage = document.querySelector('#cat_happy'); // Kat Afbeelding
+const tamagotchiNameH2 = document.querySelector('#tamagotchiNameH2');
+const tamagotchiIMG = document.querySelector('#tamagotchiIMG');
 
-
-
-// letjes
+//letjes
 let health = 100;
 let happiness = 100;
 let tamagotchiName;
 
-//functions
 
+//functions
 //Give Name
 function logInput() {
     tamagotchiName = nameInput.value;
     h2.textContent = "Hi, my name is " + tamagotchiName;
+    tamagotchiNameH2.textContent = tamagotchiName;
 }
-
 //Update Pet Status
 function updateStatus() {
     healthSpan.textContent = health;
     happinessSpan.textContent = happiness;
     checkPetStatus();
 }
-
 //Check Pet Status + Pet Dies
 function checkPetStatus() {
     if (health <= 0 || happiness <= 0) {
+        clearInterval(happinessInterval);
         health = 0;
         happiness = 0;
-        alert("We're sorry to inform you that your beloved pet has peacefully passed away."); //Bron: https://www.shecodes.io/athena/67094-how-to-create-an-alert-in-javascript
+        tamagotchiIMG.src = "images/cat_sleeping.png";
         feedButton.disabled = true;
         playButton.disabled = true;
 
-        clearInterval(happinessInterval);
+        setTimeout(function() {
+            alert("We're sorry to inform you that your beloved pet has peacefully passed away."); //Bron: https://www.shecodes.io/athena/67094-how-to-create-an-alert-in-javascript
+        },100);
     }
 }
-
 //Feeding
 function interactionFeed() {
     if (health < 101) {
@@ -144,7 +145,6 @@ function interactionFeed() {
         updateStatus();
     }
 }
-
 //playing
 function interactionPlay() {
     if (happiness < 101) {
@@ -158,11 +158,10 @@ function interactionPlay() {
     }
     updateStatus();
 }
-
 //Decrease Happiness
 function decreaseHappiness() {
     if (happiness > 0) {
-        happiness -= happiness * 0.1;
+        happiness -= 10;
         if (happiness < 0) {
             happiness = 0;
         }
@@ -172,6 +171,7 @@ function decreaseHappiness() {
 
 
 //event listeners
+
 feedButton.addEventListener('click', interactionFeed); //Feeding
 playButton.addEventListener('click', interactionPlay); //Playing
 //Start Button
@@ -181,9 +181,7 @@ startButton.addEventListener("click", () => {
 });
 //Hapiness Decrease Every 10 Seconds
 happinessInterval = setInterval(decreaseHappiness, 10000);
-
 //Name Button
 nameButton.addEventListener("click", logInput);
-
 
 updateStatus();
