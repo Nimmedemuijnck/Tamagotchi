@@ -180,8 +180,9 @@ playButton.addEventListener('click', interactionPlay); //Playing
 //Start Button
 startButton.addEventListener("click", () => {
     if (nameInput.value === "") {
-        alert("Please enter a name for your tamagotchi!"); //warning to enter a name
-        logInput();
+        alert("Please enter a name for your tamagotchi!"); // Geef een waarschuwing als er geen naam is ingevoerd
+    } else {
+        logInput(); // Roep de logInput functie aan als er een naam is ingevoerd
         firstPage.style.display = "none";
         secondPage.style.display = "block";
     }

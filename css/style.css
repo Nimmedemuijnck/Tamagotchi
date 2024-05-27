@@ -69,6 +69,6 @@ label, input, button {
     z-index: 1000; /* Zorg ervoor dat de audioplayer bovenaan andere elementen wordt weergegeven */
 }
 
-.tamagotchiIMG{
+#tamagotchiNameH2{
     font-size: 40px;
 }
