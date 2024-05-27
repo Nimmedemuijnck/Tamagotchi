@@ -1,5 +1,6 @@
 /*constante || let variabelen || alle functies  || event listnerd */
 /* healthbar: https://www.youtube.com/watch?v=Wh2kVSPi_sE */
+/* second page: https://chatgpt.com/share/ec93347c-0c04-4e9f-b067-4d8b19d59953 */
 
 /*
 function geefEten(){
@@ -139,9 +140,11 @@ function checkPetStatus() {
     if (health <= 0 || happiness <= 0) {
         health = 0;
         happiness = 0;
-        alert("Oh no! Your pet has passed away. "); //Bron: https://www.shecodes.io/athena/67094-how-to-create-an-alert-in-javascript
+        alert("We're sorry to inform you that your beloved pet has peacefully passed away."); //Bron: https://www.shecodes.io/athena/67094-how-to-create-an-alert-in-javascript
         feedButton.disabled = true;
         playButton.disabled = true;
+
+        clearInterval(happinessInterval); 
     }
 }
 
@@ -150,6 +153,12 @@ function interactionFeed() {
         health += 10;
         if (health > 100) {
             health = 100;
+        }
+        if (happiness < 101) {
+            happiness += 10;
+        }
+        if (happiness > 100) {
+            happiness = 100;
         }
         updateStatus();
     }
@@ -163,11 +172,20 @@ function interactionPlay() {
         happiness = 100;
     }
     if(health > 0) {
-        health -= 5; // Playing makes the pet a bit tired
+        health -= 5;
     }
     updateStatus();
 }
  
+function decreaseHappiness() {
+    if (happiness > 0) {
+        happiness -= happiness * 0.1;
+        if (happiness < 0) {
+            happiness = 0;
+        }
+        updateStatus();
+    }
+}
  
 //event listeners
 feedButton.addEventListener('click', interactionFeed);
@@ -176,6 +194,7 @@ startButton.addEventListener("click", () => {
     firstPage.style.display = "none";
     secondPage.style.display = "block";
 });
+happinessInterval = setInterval(decreaseHappiness, 10000); 
 
 nameButton.addEventListener("click", logInput);
  
