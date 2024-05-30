@@ -23,18 +23,14 @@ const tamagotchiIMG = document.querySelector('#tamagotchiIMG');
 let health = 100;
 let happiness = 100;
 let tamagotchiName;
-let tamagotchiNames = [];
 
 // ---------------------------------------------------------Functions---------------------------------------------------------
 
 //Give Name
 function logInput() {
     tamagotchiName = nameInput.value;
-    tamagotchiNames.push(tamagotchiName);
     h2.textContent = "Hi, my name is " + tamagotchiName;
     tamagotchiNameH2.textContent = tamagotchiName;
-
-    console.log("tamagotchiNames:", tamagotchiNames);
 }
 //Update Pet Status
 function updateStatus() {
