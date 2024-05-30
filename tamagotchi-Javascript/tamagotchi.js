@@ -2,7 +2,8 @@
 /* healthbar: https://www.youtube.com/watch?v=Wh2kVSPi_sE */
 /* second page: https://chatgpt.com/share/ec93347c-0c04-4e9f-b067-4d8b19d59953 */
 
-// constanten
+// ---------------------------------------------------------constanten---------------------------------------------------------
+
 const nameInput = document.getElementById("nameInput"); //Give Name
 const nameButton = document.getElementById("nameButton"); //Give Name Button
 const h2 = document.querySelector("h2"); //Greet
@@ -17,18 +18,23 @@ const catImage = document.querySelector('#cat_happy'); // Kat Afbeelding
 const tamagotchiNameH2 = document.querySelector('#tamagotchiNameH2');
 const tamagotchiIMG = document.querySelector('#tamagotchiIMG');
 
-//letjes
+// ---------------------------------------------------------Let---------------------------------------------------------
+
 let health = 100;
 let happiness = 100;
 let tamagotchiName;
+let tamagotchiNames = [];
 
+// ---------------------------------------------------------Functions---------------------------------------------------------
 
-//functions
 //Give Name
 function logInput() {
     tamagotchiName = nameInput.value;
+    tamagotchiNames.push(tamagotchiName);
     h2.textContent = "Hi, my name is " + tamagotchiName;
     tamagotchiNameH2.textContent = tamagotchiName;
+
+    console.log("tamagotchiNames:", tamagotchiNames);
 }
 //Update Pet Status
 function updateStatus() {
@@ -95,7 +101,8 @@ function decreaseHappiness() {
 }
 
 
-//event listeners
+// ---------------------------------------------------------Event Listners---------------------------------------------------------
+
 
 feedButton.addEventListener('click', interactionFeed); //Feeding
 playButton.addEventListener('click', interactionPlay); //Playing
