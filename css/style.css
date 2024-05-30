@@ -62,11 +62,8 @@ label, input, button {
     margin: 20px auto 0 auto; /* Zorgt ervoor dat de startknop in het midden onder de afbeelding wordt geplaatst */
 }
 
-.audio-container {
-    position: fixed;
-    top: 20px; /* Afstand vanaf de bovenkant van het scherm */
-    left: 20px; /* Afstand vanaf de linkerkant van het scherm */
-    z-index: 1000; /* Zorg ervoor dat de audioplayer bovenaan andere elementen wordt weergegeven */
+.audio-container.hidden {
+    display: none;
 }
 
 #tamagotchiNameH2{

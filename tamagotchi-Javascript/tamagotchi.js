@@ -110,6 +110,10 @@ startButton.addEventListener("click", () => {
         logInput(); // Roep de logInput functie aan als er een naam is ingevoerd
         firstPage.style.display = "none";
         secondPage.style.display = "block";
+
+        // Selecteer de audio en start het afspelen
+        const audio = document.querySelector('audio');
+        audio.play();
     }
 });
 //Hapiness Decrease Every 10 Seconds
