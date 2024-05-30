@@ -104,6 +104,7 @@ feedButton.addEventListener('click', interactionFeed); //Feeding
 playButton.addEventListener('click', interactionPlay); //Playing
 //Start Button
 startButton.addEventListener("click", () => {
+    happinessInterval = setInterval(decreaseHappiness, 4000);
     if (nameInput.value === "") {
         alert("Please enter a name for your tamagotchi!"); // Geef een waarschuwing als er geen naam is ingevoerd
     } else {
@@ -117,8 +118,10 @@ startButton.addEventListener("click", () => {
     }
 });
 //Hapiness Decrease Every 10 Seconds
-happinessInterval = setInterval(decreaseHappiness, 10000);
+
 //Name Button
 nameButton.addEventListener("click", logInput);
+
+
 
 updateStatus();
