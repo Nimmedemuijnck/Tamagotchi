@@ -105,18 +105,20 @@ playButton.addEventListener('click', interactionPlay); //Playing
 //Start Button
 startButton.addEventListener("click", () => {
     happinessInterval = setInterval(decreaseHappiness, 4000);
-    if (nameInput.value === "") {
+    // Controleer of de naam is ingevoerd met een while-lus
+    while (nameInput.value === "") {
         alert("Please enter a name for your tamagotchi!"); // Geef een waarschuwing als er geen naam is ingevoerd
-    } else {
-        logInput(); // Roep de logInput functie aan als er een naam is ingevoerd
-        firstPage.style.display = "none";
-        secondPage.style.display = "block";
-
-        // Selecteer de audio en start het afspelen
-        const audio = document.querySelector('audio');
-        audio.play();
+        return; // Stop de functie als er geen naam is ingevoerd
     }
-});
+    logInput(); // Roep de logInput functie aan als er een naam is ingevoerd
+    firstPage.style.display = "none";
+    secondPage.style.display = "block";
+
+    // Selecteer de audio en start het afspelen
+    const audio = document.querySelector('audio');
+    audio.play();
+}
+);
 //Hapiness Decrease Every 10 Seconds
 
 //Name Button
