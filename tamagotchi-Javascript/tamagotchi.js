@@ -17,12 +17,19 @@ const secondPage = document.getElementById("second-page");
 const catImage = document.querySelector('#cat_happy'); // Kat Afbeelding
 const tamagotchiNameH2 = document.querySelector('#tamagotchiNameH2');
 const tamagotchiIMG = document.querySelector('#tamagotchiIMG');
+const activities = ["feeding", "playing"];
+
+const sleepButton = document.querySelector('#sleep'); // Knop voor slapen
+
 
 // ---------------------------------------------------------Let---------------------------------------------------------
 
 let health = 100;
 let happiness = 100;
 let tamagotchiName;
+
+let sleeping = false;
+
 
 // ---------------------------------------------------------Functions---------------------------------------------------------
 
@@ -65,6 +72,7 @@ function interactionFeed() {
         if (happiness > 100) {
             happiness = 100;
         }
+        tamagotchiIMG.src = "./images/cat_happy.png"; // Verander de afbeelding naar een blije Tamagotchi
         updateStatus();
     }
 }
@@ -83,11 +91,46 @@ function interactionPlay() {
             health = 0;
         }
     }
+    tamagotchiIMG.src = "./images/cat_happy.png"; // Verander de afbeelding naar een blije Tamagotchi
     updateStatus();
 }
-//Decrease Happiness
+
+function startIncreasingMeters() {
+    increaseInterval = setInterval(() => {
+        if (sleeping && health < 100) { // Check if Tamagotchi is sleeping and health is less than 100%
+            health += 10;
+            if (health > 100) {
+                health = 100; // Ensure health does not exceed 100%
+            }
+            if (happiness < 100) {
+                happiness += 10;
+            }
+            updateStatus(); // Update the meters
+        }
+    }, 4000); // Every 4 seconds
+}
+
+// Function to stop increasing meters
+function stopIncreasingMeters() {
+    clearInterval(increaseInterval); // Clear the interval
+}
+
+// Function to make Tamagotchi sleep
+function sleepTamagotchi() {
+    if (!sleeping) {
+        sleeping = true;
+        tamagotchiIMG.src = "./images/cat_sleeping.png"; // Change image to sleeping Tamagotchi
+        startIncreasingMeters(); // Start increasing meters when Tamagotchi is sleeping
+        setTimeout(() => {
+            stopIncreasingMeters(); // Stop increasing meters when Tamagotchi wakes up
+            tamagotchiIMG.src = "./images/cat_happy.png"; // Change image back to happy Tamagotchi after waking up
+            sleeping = false;
+        }, 30000); // Wake up after 30 seconds
+    }
+}
+
 function decreaseHappiness() {
-    if (happiness > 0) {
+    if (!sleeping && happiness > 0) { // Check if Tamagotchi is not sleeping
         happiness -= 10;
         if (happiness < 0) {
             happiness = 0;
@@ -124,6 +167,7 @@ startButton.addEventListener("click", () => {
 //Name Button
 nameButton.addEventListener("click", logInput);
 
+sleepButton.addEventListener('click', sleepTamagotchi); // Luister naar klikken op de slaapknop
 
 
 updateStatus();
