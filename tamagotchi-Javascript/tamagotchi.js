@@ -97,22 +97,50 @@ function interactionPlay() {
 
 function startIncreasingMeters() {
     increaseInterval = setInterval(() => {
-        if (sleeping && health < 100) { // Check if Tamagotchi is sleeping and health is less than 100%
-            health += 10;
-            if (health > 100) {
-                health = 100; // Ensure health does not exceed 100%
+        if (sleeping) { // Check if Tamagotchi is sleeping
+            if (health < 100) {
+                health += 10;
+                if (health > 100) {
+                    health = 100; // Ensure health does not exceed 100%
+                }
             }
             if (happiness < 100) {
                 happiness += 10;
+                if (happiness > 100) {
+                    happiness = 100; // Ensure happiness does not exceed 100%
+                }
             }
             updateStatus(); // Update the meters
+
+            // Check if both health and happiness are at 100%
+            if (health === 100 && happiness === 100) {
+                clearInterval(increaseInterval); // Stop increasing meters when both are at 100%
+            }
         }
     }, 4000); // Every 4 seconds
-}
+}function startIncreasingMeters() {
+    increaseInterval = setInterval(() => {
+        if (sleeping) { // Check if Tamagotchi is sleeping
+            if (health < 100) {
+                health += 10;
+                if (health > 100) {
+                    health = 100; // Ensure health does not exceed 100%
+                }
+            }
+            if (happiness < 100) {
+                happiness += 10;
+                if (happiness > 100) {
+                    happiness = 100; // Ensure happiness does not exceed 100%
+                }
+            }
+            updateStatus(); // Update the meters
 
-// Function to stop increasing meters
-function stopIncreasingMeters() {
-    clearInterval(increaseInterval); // Clear the interval
+            // Check if both health and happiness are at 100%
+            if (health === 100 && happiness === 100) {
+                clearInterval(increaseInterval); // Stop increasing meters when both are at 100%
+            }
+        }
+    }, 4000); // Every 4 seconds
 }
 
 // Function to make Tamagotchi sleep
@@ -122,7 +150,6 @@ function sleepTamagotchi() {
         tamagotchiIMG.src = "./images/cat_sleeping.png"; // Change image to sleeping Tamagotchi
         startIncreasingMeters(); // Start increasing meters when Tamagotchi is sleeping
         setTimeout(() => {
-            stopIncreasingMeters(); // Stop increasing meters when Tamagotchi wakes up
             tamagotchiIMG.src = "./images/cat_happy.png"; // Change image back to happy Tamagotchi after waking up
             sleeping = false;
         }, 30000); // Wake up after 30 seconds
