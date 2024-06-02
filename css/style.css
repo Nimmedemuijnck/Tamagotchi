@@ -1,22 +1,22 @@
 head {
-background-color: rgb(255, 255, 255);
+    background-color: rgb(255, 255, 255);
 }
 
 body {
-    background-image: url("../images/flowerfield.jpg");/* Bron: Pintrest. Zoekterm: cartoon landscape backgrounds laptop*/
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh; 
+    background-image: url("../images/flowerfield.jpg"); 
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    display: flex; 
+    justify-content: center; /* Elementen in het midden van de horizontale as uitlijnen */
+    align-items: center; /* Elementen in het midden van de verticale as uitlijnen */
+    min-height: 100vh; /* Minimale hoogte van 100% van de viewporthoogte */
     font-family: Arial, sans-serif;
 }
 
 .container {
-    text-align: center;
-    max-width: 800px; 
-    margin: 0 auto; 
+    text-align: center; /* Tekst in de container centreren */
+    max-width: 800px; /* Maximale breedte van de container */
+    margin: 0 auto;
 }
 
 .container h1 {
@@ -33,39 +33,39 @@ body {
 }
 
 .container label {
-    font-size: 22px;
-    padding: 10px 20px;  
-    margin: 10px;  
+    font-size: 22px; 
+    padding: 10px 20px; 
+    margin: 10px;
 }
 
 .container input {
-    font-size: 18px;
-    margin: 10px;  
-}
-
-.container button {
-    font-size: 20px;
-    padding: 10px 20px; 
+    font-size: 18px; 
     margin: 10px; 
 }
 
-label, input, button {
+.container button {
+    font-size: 20px; 
+    padding: 10px 20px; 
     margin: 10px;
-
 }
+
+label, input, button {
+    margin: 10px; 
+}
+
 .nameInput {
-    display: flex;
+    display: flex; 
 }
 
 #startButton {
-    display: block;
-    margin: 20px auto 0 auto; /* Zorgt ervoor dat de startknop in het midden onder de afbeelding wordt geplaatst */
+    display: block; 
+    margin: 20px auto 0 auto; /* Bovenmarge van 20px, automatische marge aan de zijkanten en horizontale centrering */
 }
 
 .audio-container.hidden {
-    display: none;
+    display: none; /* Audiocontainer verbergen */
 }
 
-#tamagotchiNameH2{
+#tamagotchiNameH2 {
     font-size: 40px;
 }

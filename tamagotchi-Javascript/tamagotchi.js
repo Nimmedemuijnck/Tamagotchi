@@ -1,25 +1,22 @@
 /*constante || let variabelen || alle functies  || event listnerd */
-/* healthbar: https://www.youtube.com/watch?v=Wh2kVSPi_sE */
-/* second page: https://chatgpt.com/share/ec93347c-0c04-4e9f-b067-4d8b19d59953 */
 
 // ---------------------------------------------------------constanten---------------------------------------------------------
 
-const nameInput = document.getElementById("nameInput"); //Give Name
-const nameButton = document.getElementById("nameButton"); //Give Name Button
-const h2 = document.querySelector("h2"); //Greet
-const healthSpan = document.querySelector('#health'); //HealthSpan
-const happinessSpan = document.querySelector('#happiness'); //Happiness
-const feedButton = document.querySelector('#feed'); //Feeding
-const playButton = document.querySelector('#play'); //Playing
-const startButton = document.getElementById("startButton"); //Start Game
-const firstPage = document.getElementById("first-page");
-const secondPage = document.getElementById("second-page");
-const catImage = document.querySelector('#cat_happy'); // Kat Afbeelding
-const tamagotchiNameH2 = document.querySelector('#tamagotchiNameH2');
+const nameInput = document.getElementById("nameInput");
+const nameButton = document.getElementById("nameButton");
+const h2 = document.querySelector("h2"); // Tekstelement om begroeting weer te geven
+const healthSpan = document.querySelector('#health');
+const happinessSpan = document.querySelector('#happiness');
+const feedButton = document.querySelector('#feed'); // Knop om Tamagotchi te voeren
+const playButton = document.querySelector('#play'); // Knop om Tamagotchi te laten spelen
+const startButton = document.getElementById("startButton");
+const firstPage = document.getElementById("first-page"); //Chat GPT, prompt: hoe kan ik met behulp van javascript een soort tweede pagina maken zonder een nieuw html bestand aan het maken?
+const secondPage = document.getElementById("second-page"); //Chat GPT, prompt: hoe kan ik met behulp van javascript een soort tweede pagina maken zonder een nieuw html bestand aan het maken?
+const catImage = document.querySelector('#cat_happy');
+const tamagotchiNameH2 = document.querySelector('#tamagotchiNameH2'); // Element om naam van Tamagotchi weer te geven
 const tamagotchiIMG = document.querySelector('#tamagotchiIMG');
-const activities = ["feeding", "playing"];
-
-const sleepButton = document.querySelector('#sleep'); // Knop voor slapen
+const sleepButton = document.querySelector('#sleep');
+const activities = ["feeding", "playing"]; //Array van mogelijke activiteiten
 
 
 // ---------------------------------------------------------Let---------------------------------------------------------
@@ -28,24 +25,24 @@ let health = 100;
 let happiness = 100;
 let tamagotchiName;
 
-let sleeping = false;
+let sleeping = false; // Geeft aan of Tamagotchi slaapt
 
 
 // ---------------------------------------------------------Functions---------------------------------------------------------
 
-//Give Name
+// Functie om naam van Tamagotchi weer te geven
 function logInput() {
     tamagotchiName = nameInput.value;
     h2.textContent = "Hi, my name is " + tamagotchiName;
     tamagotchiNameH2.textContent = tamagotchiName;
 }
-//Update Pet Status
+// Functie om Tamagotchi status bij te werken. Met behulp van Seth
 function updateStatus() {
     healthSpan.textContent = health;
     happinessSpan.textContent = happiness;
     checkPetStatus();
 }
-//Check Pet Status + Pet Dies
+// Functie om Tamagotchi status te controleren en te kijken of Tamagotchi is overleden
 function checkPetStatus() {
     if (health <= 0 || happiness <= 0) {
         clearInterval(happinessInterval);
@@ -54,12 +51,12 @@ function checkPetStatus() {
         tamagotchiIMG.src = "./images/cat_sleeping.png";
         feedButton.disabled = true;
         playButton.disabled = true;
-        setTimeout(function() {
+        setTimeout(function () {
             alert("We're sorry to inform you that your beloved pet has peacefully passed away."); //Bron: https://www.shecodes.io/athena/67094-how-to-create-an-alert-in-javascript
-        },100);
+        }, 100);
     }
 }
-//Feeding
+// Functie om Tamagotchi te voeren. Met behulp van Seth
 function interactionFeed() {
     if (health < 101) {
         health += 10;
@@ -72,11 +69,11 @@ function interactionFeed() {
         if (happiness > 100) {
             happiness = 100;
         }
-        tamagotchiIMG.src = "./images/cat_happy.png"; // Verander de afbeelding naar een blije Tamagotchi
+        tamagotchiIMG.src = "./images/cat_happy.png";
         updateStatus();
     }
 }
-//playing
+// Functie om Tamagotchi te laten spelen. Met behulp van Seth
 function interactionPlay() {
     if (happiness < 101) {
         happiness += 10;
@@ -85,56 +82,56 @@ function interactionPlay() {
         happiness = 100;
     }
     if (health > 0) {
-        let randomDecrease = Math.floor(Math.random() * 10) + 1; //random decrease between 1-10
+        let randomDecrease = Math.floor(Math.random() * 10) + 1; // Willekeurige vermindering tussen 1-10
         health -= randomDecrease;
         if (health < 0) {
             health = 0;
         }
     }
-    tamagotchiIMG.src = "./images/cat_happy.png"; // Verander de afbeelding naar een blije Tamagotchi
+    tamagotchiIMG.src = "./images/cat_happy.png";
     updateStatus();
 }
-
+// Functie om meters te verhogen terwijl Tamagotchi slaapt. Chat GPT, prompt: ik wil dat er een knop komt om mijn tamagotchie te laten slapen. en voor iedere 10 secondat dat hij slaapt gaan de health en happiness meters met 10% omhoog. ook wil ik dat de afbeelding verandert als je op de sleep knop drukt
 function startIncreasingMeters() {
     increaseInterval = setInterval(() => {
-        if (sleeping) { // Check if Tamagotchi is sleeping
+        if (sleeping) { // Controleren of Tamagotchi slaapt
             if (health < 100) {
                 health += 10;
                 if (health > 100) {
-                    health = 100; // Ensure health does not exceed 100%
+                    health = 100; // Zorgen dat gezondheid niet hoger is dan 100%
                 }
             }
             if (happiness < 100) {
                 happiness += 10;
                 if (happiness > 100) {
-                    happiness = 100; // Ensure happiness does not exceed 100%
+                    happiness = 100; // Zorgen dat geluk niet hoger is dan 100%
                 }
             }
-            updateStatus(); // Update the meters
+            updateStatus();
 
-            // Check if both health and happiness are at 100%
+            // Controleren of zowel gezondheid als geluk 100% zijn
             if (happiness === 100) {
-                clearInterval(increaseInterval); // Stop increasing meters when both are at 100%
+                clearInterval(increaseInterval);
             }
         }
-    }, 4000); // Every 4 seconds
+    }, 4000); // Iedere 4 seconden
 }
 
-// Function to make Tamagotchi sleep
+// Functie om Tamagotchi te laten slapen
 function sleepTamagotchi() {
     if (!sleeping) {
         sleeping = true;
-        tamagotchiIMG.src = "./images/cat_sleeping.png"; // Change image to sleeping Tamagotchi
-        startIncreasingMeters(); // Start increasing meters when Tamagotchi is sleeping
+        tamagotchiIMG.src = "./images/cat_sleeping.png"; // Afbeelding veranderen naar slapende Tamagotchi
+        startIncreasingMeters(); // Meters verhogen terwijl Tamagotchi slaapt
         setTimeout(() => {
-            tamagotchiIMG.src = "./images/cat_happy.png"; // Change image back to happy Tamagotchi after waking up
+            tamagotchiIMG.src = "./images/cat_happy.png"; // Afbeelding terug veranderen naar blije Tamagotchi na wakker worden
             sleeping = false;
-        }, 30000); // Wake up after 30 seconds
+        }, 30000); // Wakker worden na 30 seconden
     }
 }
-
+// Functie om geluk van Tamagotchi elke 4 seconden te verminderen
 function decreaseHappiness() {
-    if (!sleeping && happiness > 0) { // Check if Tamagotchi is not sleeping
+    if (!sleeping && happiness > 0) { // Controleren of Tamagotchi niet slaapt
         happiness -= 10;
         if (happiness < 0) {
             happiness = 0;
@@ -146,32 +143,35 @@ function decreaseHappiness() {
 
 // ---------------------------------------------------------Event Listners---------------------------------------------------------
 
+// Knop om Tamagotchi te voeren
+feedButton.addEventListener('click', interactionFeed);
 
-feedButton.addEventListener('click', interactionFeed); //Feeding
-playButton.addEventListener('click', interactionPlay); //Playing
-//Start Button
+// Knop om Tamagotchi te laten spelen
+playButton.addEventListener('click', interactionPlay);
+
+//Spel starten
 startButton.addEventListener("click", () => {
-    happinessInterval = setInterval(decreaseHappiness, 4000);
-    // Controleer of de naam is ingevoerd met een while-lus
+    happinessInterval = setInterval(decreaseHappiness, 4000); //geluk neemt iedere 4 seconden af
+    // Controleer of de naam is ingevoerd met een while loop
     while (nameInput.value === "") {
-        alert("Please enter a name for your tamagotchi!"); // Geef een waarschuwing als er geen naam is ingevoerd
+        alert("Please enter a name for your tamagotchi!"); // Geeft een waarschuwing als er geen naam is ingevoerd
         return; // Stop de functie als er geen naam is ingevoerd
     }
     logInput(); // Roep de logInput functie aan als er een naam is ingevoerd
-    firstPage.style.display = "none";
-    secondPage.style.display = "block";
+    firstPage.style.display = "none"; // Eerste pagina verbergen. Chat GPT, prompt: hoe kan ik met behulp van javascript een soort tweede pagina maken zonder een nieuw html bestand aan het maken?
+    secondPage.style.display = "block"; // Tweede pagina weergeven. Chat GPT, prompt: hoe kan ik met behulp van javascript een soort tweede pagina maken zonder een nieuw html bestand aan het maken?
 
     // Selecteer de audio en start het afspelen
     const audio = document.querySelector('audio');
     audio.play();
 }
 );
-//Hapiness Decrease Every 10 Seconds
 
-//Name Button
+//Knop om naam van Tamagotchi in te voeren
 nameButton.addEventListener("click", logInput);
 
+//Knop om Tamagotchi te laten slapen
 sleepButton.addEventListener('click', sleepTamagotchi); // Luister naar klikken op de slaapknop
 
-
+// Status van Tamagotchi bijwerken
 updateStatus();
