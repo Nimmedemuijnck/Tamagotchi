@@ -15,7 +15,7 @@ const secondPage = document.getElementById("second-page"); //Chat GPT, prompt: h
 const catImage = document.querySelector('#cat_happy');
 const tamagotchiNameH2 = document.querySelector('#tamagotchiNameH2'); // Element om naam van Tamagotchi weer te geven
 const tamagotchiIMG = document.querySelector('#tamagotchiIMG');
-const sleepButton = document.getElementById('#sleep');
+const sleepButton = document.getElementById("sleep");
 const activities = ["feeding", "playing"]; //Array van mogelijke activiteiten
 
 
@@ -50,7 +50,6 @@ function checkPetStatus() {
         tamagotchiIMG.src = "./images/cat_sleeping.png";
         feedButton.disabled = true;
         playButton.disabled = true;
-        sleepButton.disabled = true;
         setTimeout(function () {
             alert("We're sorry to inform you that your beloved pet has peacefully passed away."); //Bron: https://www.shecodes.io/athena/67094-how-to-create-an-alert-in-javascript
         }, 100);
@@ -126,7 +125,7 @@ function sleepTamagotchi() {
         setTimeout(() => {
             tamagotchiIMG.src = "./images/cat_happy.png"; // Afbeelding terug veranderen naar blije Tamagotchi na wakker worden
             sleeping = false;
-        }, 30000); // Wakker worden na 30 seconden
+        }, 15000); // Wakker worden na 15 seconden
     }
 }
 // Functie om geluk van Tamagotchi elke 4 seconden te verminderen
