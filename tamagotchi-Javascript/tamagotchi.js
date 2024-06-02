@@ -15,7 +15,7 @@ const secondPage = document.getElementById("second-page"); //Chat GPT, prompt: h
 const catImage = document.querySelector('#cat_happy');
 const tamagotchiNameH2 = document.querySelector('#tamagotchiNameH2'); // Element om naam van Tamagotchi weer te geven
 const tamagotchiIMG = document.querySelector('#tamagotchiIMG');
-const sleepButton = document.querySelector('#sleep');
+const sleepButton = document.getElementById('#sleep');
 const activities = ["feeding", "playing"]; //Array van mogelijke activiteiten
 
 
