@@ -113,30 +113,7 @@ function startIncreasingMeters() {
             updateStatus(); // Update the meters
 
             // Check if both health and happiness are at 100%
-            if (health === 100 && happiness === 100) {
-                clearInterval(increaseInterval); // Stop increasing meters when both are at 100%
-            }
-        }
-    }, 4000); // Every 4 seconds
-}function startIncreasingMeters() {
-    increaseInterval = setInterval(() => {
-        if (sleeping) { // Check if Tamagotchi is sleeping
-            if (health < 100) {
-                health += 10;
-                if (health > 100) {
-                    health = 100; // Ensure health does not exceed 100%
-                }
-            }
-            if (happiness < 100) {
-                happiness += 10;
-                if (happiness > 100) {
-                    happiness = 100; // Ensure happiness does not exceed 100%
-                }
-            }
-            updateStatus(); // Update the meters
-
-            // Check if both health and happiness are at 100%
-            if (health === 100 && happiness === 100) {
+            if (happiness === 100) {
                 clearInterval(increaseInterval); // Stop increasing meters when both are at 100%
             }
         }
